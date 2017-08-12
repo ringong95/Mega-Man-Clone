@@ -11,8 +11,6 @@ public class PlayerController : MonoBehaviour {
     public Rigidbody2D rb;
 
     private SpriteRenderer mySpriteRenderer;
-    private bool canJump;
-    private bool isGrounded;
 
     // Use this for initialization
     void Start () {
@@ -23,19 +21,20 @@ public class PlayerController : MonoBehaviour {
     // Update is called once per frame
     private void Update()
     {
-        if (Input.GetButtonDown("Fire1"))
-        {
-            Rigidbody2D bulletInstance = Instantiate(bullet, transform.position, Quaternion.Euler(new Vector3(0,0,0))) as Rigidbody2D;
-            if (mySpriteRenderer.flipX)
-            {
-              bulletInstance.velocity = new Vector2(-speed, 0);
-            }
-            if (mySpriteRenderer.flipX == false)
-            {
-                bulletInstance.velocity = new Vector2(speed, 0);
-            }
-            //bulletInstance.velocity = new Vector2(speed, 0);
-        };
+        //Debug.Log(rb.simulated);
+        //if (Input.GetButtonDown("Fire1"))
+        //{
+        //    Rigidbody2D bulletInstance = Instantiate(bullet, transform.position, Quaternion.Euler(new Vector3(0,0,0))) as Rigidbody2D;
+        //    if (mySpriteRenderer.flipX)
+        //    {
+        //      bulletInstance.velocity = new Vector2(-speed, 0);
+        //    }
+        //    if (mySpriteRenderer.flipX == false)
+        //    {
+        //        bulletInstance.velocity = new Vector2(speed, 0);
+        //    }
+        //    //bulletInstance.velocity = new Vector2(speed, 0);
+        //};
        
     }
     void FixedUpdate()
@@ -57,13 +56,12 @@ public class PlayerController : MonoBehaviour {
 
         if (moveHorizontal > 0 && mySpriteRenderer.flipX == true)
         {
-
+           
             mySpriteRenderer.flipX = false;
         }
         if (Input.GetKeyDown("space"))
         {
-            //rb.velocity = new Vector2 (0, 10);
-            rb.AddForce(Vector3.up * jumpForce , ForceMode2D.Impulse);
+            rb.AddRelativeForce(transform.up * jumpForce, ForceMode2D.Impulse);
         }
     }
  
