@@ -9,7 +9,6 @@ public class BulletController : MonoBehaviour {
 
     // Use this for initialization
     void Start () {
-        Physics2D.gravity = Vector2.zero;
         rb = GetComponent<Rigidbody2D>();
         mySpriteRenderer = GetComponent<SpriteRenderer>();
     }

@@ -101,6 +101,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   jumpForce: 100
   speed: 20
+  bulletSpeed: 5
   maxSpeed: 200000
   bullet: {fileID: 50780738586944660, guid: 4d112ecf347fc814e83c1bdaa4f3fa6a, type: 2}
   rb: {fileID: 0}

@@ -6,6 +6,7 @@ public class PlayerController : MonoBehaviour {
 
     public float jumpForce;
     public float speed;
+    public float bulletSpeed;    
     public float maxSpeed;
     public Rigidbody2D bullet;
     public Rigidbody2D rb;
@@ -22,20 +23,22 @@ public class PlayerController : MonoBehaviour {
     private void Update()
     {
         //Debug.Log(rb.simulated);
-        //if (Input.GetButtonDown("Fire1"))
-        //{
-        //    Rigidbody2D bulletInstance = Instantiate(bullet, transform.position, Quaternion.Euler(new Vector3(0,0,0))) as Rigidbody2D;
-        //    if (mySpriteRenderer.flipX)
-        //    {
-        //      bulletInstance.velocity = new Vector2(-speed, 0);
-        //    }
-        //    if (mySpriteRenderer.flipX == false)
-        //    {
-        //        bulletInstance.velocity = new Vector2(speed, 0);
-        //    }
-        //    //bulletInstance.velocity = new Vector2(speed, 0);
-        //};
-       
+        if (Input.GetButtonDown("Fire1"))
+        {
+            Rigidbody2D clone;
+            clone = Instantiate(bullet, transform.position, transform.rotation) as Rigidbody2D;
+
+            if (mySpriteRenderer.flipX)
+            {
+                clone.velocity = new Vector2(-bulletSpeed, 0);
+            }
+            if (!mySpriteRenderer.flipX)
+            {
+                clone.velocity = new Vector2(bulletSpeed, 0);
+            }
+            //bulletInstance.velocity = new Vector2(speed, 0);
+        };
+
     }
     void FixedUpdate()
     {
